@@ -47,6 +47,8 @@ docker run --name='memcached' -it --rm \
 -e 'EXTRA_OPTS=-t 2 -vv' sameersbn/memcached:latest
 ```
 
+Please refer to http://linux.die.net/man/1/memcached for complete list of available memcached configuration options.
+
 # Upgrading
 
 To upgrade to newer releases, simply follow this 3 step upgrade procedure.
