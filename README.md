@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=svg)](https://circleci.com/gh/sameersbn/docker-memcached)
+
 # Table of Contents
 
 - [Introduction](#introduction)
