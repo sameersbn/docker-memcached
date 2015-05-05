@@ -12,4 +12,4 @@ dependencies:
 test:
   override:
     - docker run -d -p 21211:11211 sameersbn/memcached; sleep 10
-    - (echo -e 'stats\nquit'; sleep 1) | telnet 127.0.0.1 21211
+    - (echo -e 'stats\nquit'; sleep 1) | nc 127.0.0.1 21211
