@@ -11,5 +11,5 @@ dependencies:
     - mkdir -p ~/docker-memcached; docker save --output ~/docker-memcached/image.tar sameersbn/memcached
 test:
   override:
-    - docker run -d -p 172.17.42.1:11311:11211 sameersbn/memcached; sleep 10
-    - nc -z 172.17.42.1 11311
+    - docker run -d -p 21211:11211 sameersbn/memcached; sleep 10
+    - nc -z 127.0.0.1 21211
