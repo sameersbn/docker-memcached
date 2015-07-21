@@ -6,9 +6,9 @@ RUN apt-get update \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
  && rm -rf /var/lib/apt/lists/*
 
-COPY start /start
-RUN chmod 755 /start
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
 
 EXPOSE 11211
 
-CMD ["/start"]
+CMD ["/sbin/entrypoint.sh"]
