@@ -1,6 +1,8 @@
 FROM sameersbn/ubuntu:14.04.20150712
 MAINTAINER sameer@damagehead.com
 
+ENV MEMCACHED_USER=nobody
+
 RUN apt-get update \
  && apt-get install -y memcached \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
