@@ -10,5 +10,4 @@ COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
 EXPOSE 11211
-
-CMD ["/sbin/entrypoint.sh"]
+ENTRYPOINT ["/sbin/entrypoint.sh"]
