@@ -6,7 +6,7 @@ RUN apt-get update \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
  && rm -rf /var/lib/apt/lists/*
 
-ADD start /start
+COPY start /start
 RUN chmod 755 /start
 
 EXPOSE 11211
