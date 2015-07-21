@@ -12,7 +12,7 @@ fi
 
 # default behaviour is to launch memcached
 if [[ -z ${1} ]]; then
-  exec $(which memcached) -v -p 11211 -u ${MEMCACHED_USER} ${EXTRA_ARGS}
+  exec $(which memcached) -u ${MEMCACHED_USER} -vp 11211 ${EXTRA_ARGS}
 else
   exec "$@"
 fi
