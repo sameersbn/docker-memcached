@@ -1,110 +1,122 @@
-[![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=svg)](https://circleci.com/gh/sameersbn/docker-memcached)
+[![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-memcached)
 
-# Table of Contents
+# sameersbn/memcached
 
 - [Introduction](#introduction)
-- [Contributing](#contributing)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Shell Access](#shell-access)
-- [Upgrading](#upgrading)
+  - [Contributing](#contributing)
+  - [Issues](#issues)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Quickstart](#quickstart)
+  - [Configuration](#configuration)
+- [Maintenance](#maintenance)
+  - [Upgrading](#upgrading)
+  - [Shell Access](#shell-access)
 
 # Introduction
 
-Dockerfile to build a memcached container image which can be linked to other containers.
+`Dockerfile` to create a [Docker](https://www.docker.com/) container image for [Memcached](http://memcached.org/).
 
-# Contributing
+Memcached is a free & open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
+
+## Contributing
 
 If you find this image useful here's how you can help:
 
-- Send a Pull Request with your awesome new features and bug fixes
-- Help new users with [Issues](https://github.com/sameersbn/docker-memcached/issues) they may encounter
+- Send a pull request with your awesome features and bug fixes
+- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
 - Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
-# Installation
+## Issues
 
-Pull the latest version of the image from the docker index. This is the recommended method of installation as it is easier to update image in the future. These builds are performed by the **Docker Trusted Build** service.
+Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) for instructions.
+
+SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
+
+If the above recommendations do not help then [report your issue](../../issues/new) along with the following information:
+
+- Output of the `docker version` and `docker info` commands
+- The `docker run` command or `docker-compose.yml` used to start the image. Mask out the sensitive bits.
+- Please state if you are using [Boot2Docker](http://www.boot2docker.io), [VirtualBox](https://www.virtualbox.org), etc.
+
+# Getting started
+
+## Installation
+
+This image is available as a [trusted build](//hub.docker.com/u/sameersbn/memcached) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
 
 ```bash
 docker pull sameersbn/memcached:latest
 ```
 
-Alternately you can build the image yourself.
+Alternatively you can build the image yourself.
 
 ```bash
 git clone https://github.com/sameersbn/docker-memcached.git
 cd docker-memcached
-docker build -t="$USER/memcached" .
+docker build --tag $USER/memcached .
 ```
 
-# Quick Start
+## Quickstart
 
-Run the memcached image
+Start Memcached using:
 
 ```bash
-docker run --name='memcached' -it --rm sameersbn/memcached:latest
+docker run --name memcached -d --restart=always \
+  --publish 11211:11211 \
+  sameersbn/memcached:latest
 ```
 
-The default cache size (*maximum memory*) is `64` MB. You can set it to whatever you like using the `CACHE_SIZE` configuration option. For example, if I wanted to set the cache size to `256` MB:
+*Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
+
+# Configuration
+
+Arguments specified on the `docker run` command are passed on the `memcached` command. Using this feature you can configure the start of memcached. For example to set the maximum cache size to 256 MB (default 64 MB) you can do:
 
 ```bash
-docker run --name='memcached' -it --rm \
--e 'CACHE_SIZE=256' sameersbn/memcached:latest
-```
-
-Additionally you can also supply additional command line switches to the memcached command using the `EXTRA_OPTS` configuration option. For example, if I wanted to `2` threads and be extra verbose:
-
-```bash
-docker run --name='memcached' -it --rm \
--e 'EXTRA_OPTS=-t 2 -vv' sameersbn/memcached:latest
+docker run --name memcached -d --restart=always \
+  --publish 11211:11211 \
+  sameersbn/memcached:latest -m 256
 ```
 
 Please refer to http://linux.die.net/man/1/memcached for complete list of available memcached configuration options.
 
-# Shell Access
+# Maintenance
 
-For debugging and maintenance purposes you may want access the containers shell. If you are using docker version `1.3.0` or higher you can access a running containers shell using `docker exec` command.
+## Upgrading
+
+To upgrade to newer releases:
+
+  1. Download the updated Docker image:
+
+  ```bash
+  docker pull sameersbn/memcached:latest
+  ```
+
+  2. Stop the currently running image:
+
+  ```bash
+  docker stop memcached
+  ```
+
+  3. Remove the stopped container
+
+  ```bash
+  docker rm -v memcached
+  ```
+
+  4. Start the updated image
+
+  ```bash
+  docker run -name memcached -d \
+    [OPTIONS] \
+    sameersbn/memcached:latest
+  ```
+
+## Shell Access
+
+For debugging and maintenance purposes you may want access the containers shell. If you are using Docker version `1.3.0` or higher you can access a running containers shell by starting `bash` using `docker exec`:
 
 ```bash
 docker exec -it memcached bash
-```
-
-If you are using an older version of docker, you can use the [nsenter](http://man7.org/linux/man-pages/man1/nsenter.1.html) linux tool (part of the util-linux package) to access the container shell.
-
-Some linux distros (e.g. ubuntu) use older versions of the util-linux which do not include the `nsenter` tool. To get around this @jpetazzo has created a nice docker image that allows you to install the `nsenter` utility and a helper script named `docker-enter` on these distros.
-
-To install `nsenter` execute the following command on your host,
-
-```bash
-docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
-```
-
-Now you can access the container shell using the command
-
-```bash
-sudo docker-enter memcached
-```
-
-For more information refer https://github.com/jpetazzo/nsenter
-
-# Upgrading
-
-To upgrade to newer releases, simply follow this 3 step upgrade procedure.
-
-- **Step 1**: Stop the currently running image
-
-```bash
-docker stop memcached
-```
-
-- **Step 2**: Update the docker image.
-
-```bash
-docker pull sameersbn/memcached:latest
-```
-
-- **Step 3**: Start the image
-
-```bash
-docker run --name='memcached' -d [OPTIONS] sameersbn/memcached:latest
 ```
