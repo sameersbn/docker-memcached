@@ -8,7 +8,7 @@
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Quickstart](#quickstart)
-  - [Configuration](#configuration)
+  - [Command-line arguments](#command-line-arguments)
 - [Maintenance](#maintenance)
   - [Upgrading](#upgrading)
   - [Shell Access](#shell-access)
@@ -69,17 +69,15 @@ docker run --name memcached -d --restart=always \
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
 
-# Configuration
+## Command-line arguments
 
-Arguments specified on the `docker run` command are passed on the `memcached` command. Using this feature you can configure the start of memcached. For example to set the maximum cache size to 256 MB (default 64 MB) you can do:
+You can customize the launch command of Memcached server by specifying arguments to `memcached` on the `docker run` command. For example the following command prints the help menu of `memcached` command:
 
 ```bash
-docker run --name memcached -d --restart=always \
+docker run --name memcached -it --rm \
   --publish 11211:11211 \
-  sameersbn/memcached:latest -m 256
+  sameersbn/memcached:latest -h
 ```
-
-Please refer to http://linux.die.net/man/1/memcached for complete list of available memcached configuration options.
 
 # Maintenance
 
