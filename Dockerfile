@@ -13,3 +13,4 @@ RUN chmod 755 /sbin/entrypoint.sh
 
 EXPOSE 11211/tcp 11211/udp
 ENTRYPOINT ["/sbin/entrypoint.sh"]
+CMD ["/usr/bin/memcached"]
