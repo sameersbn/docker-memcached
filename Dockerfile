@@ -4,7 +4,7 @@ MAINTAINER sameer@damagehead.com
 ENV MEMCACHED_USER=nobody
 
 RUN apt-get update \
- && apt-get install -y memcached \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y memcached \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
  && rm -rf /var/lib/apt/lists/*
 
