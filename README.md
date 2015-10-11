@@ -1,6 +1,6 @@
 [![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-memcached)
 
-# sameersbn/memcached
+# quay.io/sameersbn/memcached:latest
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -43,10 +43,10 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-This image is available as a [trusted build](//hub.docker.com/r/sameersbn/memcached) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
+Automated builds of the image are available on [Quay.io](https://quay.io/repository/sameersbn/memcached) and is the recommended method of installation.
 
 ```bash
-docker pull sameersbn/memcached:latest
+docker pull quay.io/sameersbn/memcached:latest
 ```
 
 Alternatively you can build the image yourself.
@@ -64,7 +64,7 @@ Start Memcached using:
 ```bash
 docker run --name memcached -d --restart=always \
   --publish 11211:11211 \
-  sameersbn/memcached:latest
+  quay.io/sameersbn/memcached:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -76,7 +76,7 @@ You can customize the launch command of Memcached server by specifying arguments
 ```bash
 docker run --name memcached -it --rm \
   --publish 11211:11211 \
-  sameersbn/memcached:latest -h
+  quay.io/sameersbn/memcached:latest -h
 ```
 
 # Maintenance
@@ -88,7 +88,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull sameersbn/memcached:latest
+  docker pull quay.io/sameersbn/memcached:latest
   ```
 
   2. Stop the currently running image:
@@ -108,7 +108,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name memcached -d \
     [OPTIONS] \
-    sameersbn/memcached:latest
+    quay.io/sameersbn/memcached:latest
   ```
 
 ## Shell Access

@@ -1,5 +1,5 @@
 Memcached:
-  image: sameersbn/memcached:latest
+  image: quay.io/sameersbn/memcached:latest
   ports:
     - "11211:11211"
   restart: always
