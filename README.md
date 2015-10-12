@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-memcached)
+[![Circle CI](https://circleci.com/gh/sameersbn/docker-memcached.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-memcached) [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/memcached/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/memcached)
 
 # quay.io/sameersbn/memcached:latest
 
