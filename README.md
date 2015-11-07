@@ -43,7 +43,9 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-Automated builds of the image are available on [Quay.io](https://quay.io/repository/sameersbn/memcached) and is the recommended method of installation.
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/sameersbn/memcached) and is the recommended method of installation.
+
+> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/memcached)
 
 ```bash
 docker pull sameersbn/memcached:latest
