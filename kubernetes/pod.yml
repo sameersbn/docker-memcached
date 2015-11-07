@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: memcached
-      image: quay.io/sameersbn/memcached
+      image: sameersbn/memcached
       ports:
         - containerPort: 11211
           protocol: TCP

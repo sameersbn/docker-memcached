@@ -1,4 +1,4 @@
 all: build
 
 build:
-	@docker build --tag=quay.io/sameersbn/memcached .
+	@docker build --tag=sameersbn/memcached .
