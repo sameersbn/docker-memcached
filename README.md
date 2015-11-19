@@ -54,9 +54,7 @@ docker pull sameersbn/memcached:latest
 Alternatively you can build the image yourself.
 
 ```bash
-git clone https://github.com/sameersbn/docker-memcached.git
-cd docker-memcached
-docker build --tag $USER/memcached .
+docker build -t sameersbn/memcached github.com/sameersbn/docker-memcached
 ```
 
 ## Quickstart
