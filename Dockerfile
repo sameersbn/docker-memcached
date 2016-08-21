@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20151213
+FROM sameersbn/ubuntu:14.04.20160817
 MAINTAINER sameer@damagehead.com
 
 ENV MEMCACHED_USER=nobody
