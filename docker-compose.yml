@@ -1,5 +1,5 @@
 Memcached:
-  image: sameersbn/memcached:latest
+  image: sameersbn/memcached:1.5.6
   ports:
     - "11211:11211"
   restart: always
