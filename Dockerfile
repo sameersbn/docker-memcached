@@ -1,10 +1,12 @@
-FROM sameersbn/ubuntu:14.04.20170123
-MAINTAINER sameer@damagehead.com
+FROM ubuntu:bionic-20180526
+LABEL maintainer="sameer@damagehead.com"
 
-ENV MEMCACHED_USER=nobody
+ENV MEMCACHED_USER=nobody \
+    MEMCACHED_VERSION=1.5.6
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y memcached \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      memcached=${MEMCACHED_VERSION}* \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
  && rm -rf /var/lib/apt/lists/*
 
