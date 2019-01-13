@@ -4,7 +4,7 @@
 >
 > Active maintenance of the image has been halted. Your [contributions](#contributing) are welcome.
 
-# sameersbn/memcached:1.5.6
+# sameersbn/memcached:1.5.6-1
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -52,7 +52,7 @@ Automated builds of the image are available on [Dockerhub](https://hub.docker.co
 > **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/memcached)
 
 ```bash
-docker pull sameersbn/memcached:1.5.6
+docker pull sameersbn/memcached:1.5.6-1
 ```
 
 Alternatively you can build the image yourself.
@@ -68,7 +68,7 @@ Start Memcached using:
 ```bash
 docker run --name memcached -d --restart=always \
   --publish 11211:11211 \
-  sameersbn/memcached:1.5.6
+  sameersbn/memcached:1.5.6-1
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -80,7 +80,7 @@ You can customize the launch command of Memcached server by specifying arguments
 ```bash
 docker run --name memcached -it --rm \
   --publish 11211:11211 \
-  sameersbn/memcached:1.5.6 -h
+  sameersbn/memcached:1.5.6-1 -h
 ```
 
 # Maintenance
@@ -92,7 +92,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull sameersbn/memcached:1.5.6
+  docker pull sameersbn/memcached:1.5.6-1
   ```
 
   2. Stop the currently running image:
@@ -112,7 +112,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name memcached -d \
     [OPTIONS] \
-    sameersbn/memcached:1.5.6
+    sameersbn/memcached:1.5.6-1
   ```
 
 ## Shell Access
